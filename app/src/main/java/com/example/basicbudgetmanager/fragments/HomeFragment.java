@@ -51,15 +51,15 @@ Context mContext;
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        TextView tv_Menu=view.findViewById(R.id.tv_main);
-        BudgetViewModel budgetViewModel= new ViewModelProvider(this).get(BudgetViewModel.class);
-        budgetViewModel.getExpenseList().observe((LifecycleOwner) mContext, new Observer<List<Expense>>() {
-            @Override
-            public void onChanged(List<Expense> expenses) {
-
-tv_Menu.setText(expenses.get(0).getSource());
-            }
-        });
+//        TextView tv_Menu=view.findViewById(R.id.tv_main);
+//        BudgetViewModel budgetViewModel= new ViewModelProvider(this).get(BudgetViewModel.class);
+//        budgetViewModel.getExpenseList().observe((LifecycleOwner) mContext, new Observer<List<Expense>>() {
+//            @Override
+//            public void onChanged(List<Expense> expenses) {
+//
+//tv_Menu.setText(expenses.get(0).getSource());
+//            }
+//        });
 
 
     }
