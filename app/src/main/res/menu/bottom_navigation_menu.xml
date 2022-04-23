@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/home_menu"
+        android:title="Home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:enabled="true"
+
+        ></item>
+
+    <item
+        android:id="@+id/income_menu"
+        android:title="Income"
+        android:icon="@drawable/ic_baseline_add_24"
+        android:enabled="true"
+        ></item>
+
+    <item
+        android:id="@+id/expenses_menu"
+        android:title="Expenses"
+        android:icon="@drawable/ic_baseline_subtract_24"
+        android:enabled="true"
+        ></item>
+</menu>
+
+
