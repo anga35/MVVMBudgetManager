@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +19,7 @@ import android.widget.TextView;
 
 import com.example.basicbudgetmanager.BudgetViewModel;
 import com.example.basicbudgetmanager.R;
+import com.example.basicbudgetmanager.adapters.IncomeRecyclerAdapter;
 import com.example.basicbudgetmanager.models.Expense;
 import com.example.basicbudgetmanager.models.Income;
 
@@ -52,12 +55,24 @@ Context mContext;
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         TextView tv_Income=view.findViewById(R.id.tv_income);
+        RecyclerView rv_Income=view.findViewById(R.id.rv_income);
+        rv_Income.setLayoutManager(new LinearLayoutManager(mContext));
         BudgetViewModel budgetViewModel= new ViewModelProvider(requireActivity()).get(BudgetViewModel.class);
         budgetViewModel.getIncomeList().observe((LifecycleOwner) mContext, new Observer<List<Income>>() {
             @Override
             public void onChanged(List<Income> incomes) {
-if(!incomes.isEmpty())
-                tv_Income.setText(incomes.get(0).getSource());
+if(!incomes.isEmpty()){
+
+Integer sum=0;
+    for (Income income : incomes) {
+sum=sum+income.amount;
+    }
+    tv_Income.setText("$" +sum.toString());
+
+    rv_Income.setAdapter(new IncomeRecyclerAdapter(mContext,incomes));
+
+}
+
             }
         });
 

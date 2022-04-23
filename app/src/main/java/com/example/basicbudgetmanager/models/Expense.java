@@ -14,13 +14,13 @@ public class Expense {
     @NonNull
     String source;
 
-    int amount;
+    Integer amount;
 
     @NonNull
     String date;
 
 
-    public Expense(@NonNull String source, @NonNull int amount,@NonNull String date){
+    public Expense(@NonNull String source, @NonNull Integer amount,@NonNull String date){
         this.source=source;
         this.amount=amount;
         this.date=date;
@@ -31,7 +31,7 @@ public class Expense {
         return this.source;
     }
 
-   public int getAmount(){
+   public Integer getAmount(){
 
         return this.amount;
     }

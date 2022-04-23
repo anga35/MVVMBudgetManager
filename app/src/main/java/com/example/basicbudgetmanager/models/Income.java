@@ -15,13 +15,13 @@ public int id;
 @NonNull
 public String source;
 
-public int amount;
+public Integer amount;
 
 @NonNull
 public String date;
 
 
-public Income(@NonNull String source, @NonNull int amount,@NonNull String date){
+public Income(@NonNull String source, @NonNull Integer amount,@NonNull String date){
     this.source=source;
     this.amount=amount;
     this.date=date;
@@ -32,7 +32,7 @@ public String getSource(){
     return this.source;
 }
 
-    public int getAmount(){
+    public Integer getAmount(){
 
     return this.amount;
 }
@@ -49,7 +49,7 @@ public String getSource(){
     this.source=source;
 }
 
-    public void setAmount( int amount){
+    public void setAmount( Integer amount){
     this.amount=amount;
 
 }

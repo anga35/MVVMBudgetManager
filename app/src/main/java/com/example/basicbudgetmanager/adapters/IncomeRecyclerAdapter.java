@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,7 +17,7 @@ import java.util.List;
 public class IncomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     List<Income> incomeList;
     private Context context;
-    IncomeRecyclerAdapter(Context context,List<Income> incomeList){
+    public IncomeRecyclerAdapter(Context context, List<Income> incomeList){
 
         this.context=context;
         this.incomeList=incomeList;
@@ -33,11 +34,24 @@ public class IncomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
+        if(holder instanceof IncomeViewHolder){
+
+           TextView tv_incomeAmount=holder.itemView.findViewById(R.id.item_incomeAmount);
+           TextView tv_incomeSource=holder.itemView.findViewById(R.id.item_incomeSource);
+           TextView tv_incomeDate=holder.itemView.findViewById(R.id.item_incomeDate);
+
+            tv_incomeAmount.setText(incomeList.get(position).amount.toString());
+            tv_incomeSource.setText(incomeList.get(position).source);
+            tv_incomeDate.setText(incomeList.get(position).date);
+
+        }
+
+
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return incomeList.size();
     }
 
     class IncomeViewHolder extends RecyclerView.ViewHolder{

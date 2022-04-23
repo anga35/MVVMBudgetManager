@@ -13,9 +13,9 @@ public class BudgetRepository{
     private BudgetDAO budgetDao;
     LiveData<List<Income>> incomeList;
     LiveData<List<Expense>> expenseList;
-
+BudgetRoomDatabase db;
     public BudgetRepository(Application application){
-        BudgetRoomDatabase db=BudgetRoomDatabase.getDatabase(application);
+        this.db=BudgetRoomDatabase.getDatabase(application);
         budgetDao=db.budgetDAO();
         incomeList=budgetDao.getIncomes();
         expenseList=budgetDao.getExpense();
@@ -35,10 +35,23 @@ public class BudgetRepository{
 
 
     public void insertIncome(Income income){
-        budgetDao.insertIncome(income);
+        db.databaseWriteExecutor.execute(()->{
+
+            budgetDao.insertIncome(income);
+
+
+        });
+
     }
     public void insertExpense(Expense expense){
-        budgetDao.insertExpense(expense);
+
+        db.databaseWriteExecutor.execute(()->{
+
+
+            budgetDao.insertExpense(expense);
+
+        });
+
 
     }
 

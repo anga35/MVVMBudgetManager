@@ -30,11 +30,11 @@ public abstract class BudgetRoomDatabase extends RoomDatabase {
 
     public static volatile BudgetRoomDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
-    static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+    public static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
 
     static BudgetRoomDatabase getDatabase(final Context context) {
-        String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+
 
         if (INSTANCE == null) {
             synchronized (BudgetRoomDatabase.class) {
@@ -48,19 +48,6 @@ public abstract class BudgetRoomDatabase extends RoomDatabase {
                                 public void onOpen(@NonNull SupportSQLiteDatabase db) {
                                     super.onOpen(db);
 
-                               databaseWriteExecutor.execute(()->{
-
-                                   BudgetDAO mDao = INSTANCE.budgetDAO();
-                                   mDao.deleteAllIncome();
-                                   mDao.deleteAllExpense();
-
-                                   Income income = new Income("Yahoo", 2000, currentDate);
-                                   mDao.insertIncome(income);
-
-                                   Expense expense = new Expense("Urgent 2k", 2000, currentDate);
-                                   mDao.insertExpense(expense);
-
-                               });
 
 
 

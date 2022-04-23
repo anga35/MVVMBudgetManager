@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +19,7 @@ import android.widget.TextView;
 
 import com.example.basicbudgetmanager.BudgetViewModel;
 import com.example.basicbudgetmanager.R;
+import com.example.basicbudgetmanager.adapters.ExpensesRecyclerAdapter;
 import com.example.basicbudgetmanager.models.Expense;
 
 import java.util.List;
@@ -47,12 +50,27 @@ Context mContext;
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         TextView tv_expense=view.findViewById(R.id.tv_expense);
+        RecyclerView rv_expense=view.findViewById(R.id.rv_expenses);
+        rv_expense.setLayoutManager(new LinearLayoutManager(mContext));
         BudgetViewModel budgetViewModel= new ViewModelProvider(requireActivity()).get(BudgetViewModel.class);
         budgetViewModel.getExpenseList().observe((LifecycleOwner) mContext, new Observer<List<Expense>>() {
+
+
             @Override
             public void onChanged(List<Expense> expenses) {
+
+
+
 if(!expenses.isEmpty()){
-    tv_expense.setText(expenses.get(0).getDate());
+  Integer sum=0;
+    for(Expense expense: expenses){
+
+        sum=sum+expense.getAmount();
+
+    }
+
+    rv_expense.setAdapter(new ExpensesRecyclerAdapter(mContext,expenses));
+    tv_expense.setText("$" + sum.toString());
 }
 
             }

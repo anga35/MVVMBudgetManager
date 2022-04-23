@@ -1,4 +1,4 @@
-package com.example.basicbudgetmanager;
+package com.example.basicbudgetmanager.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +9,8 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.basicbudgetmanager.BudgetViewModel;
+import com.example.basicbudgetmanager.R;
 import com.example.basicbudgetmanager.adapters.PagerFragmentAdapter;
 import com.example.basicbudgetmanager.models.Expense;
 import com.example.basicbudgetmanager.models.Income;
