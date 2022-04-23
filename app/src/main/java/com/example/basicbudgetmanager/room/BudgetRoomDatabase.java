@@ -51,6 +51,13 @@ public abstract class BudgetRoomDatabase extends RoomDatabase {
 
 
 
+BudgetDAO dao=INSTANCE.budgetDAO();
+
+databaseWriteExecutor.execute(()->{
+    dao.deleteAllIncome();
+    dao.deleteAllExpense();
+});
+
 
 
 

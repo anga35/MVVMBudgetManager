@@ -46,7 +46,7 @@ public ExpensesRecyclerAdapter(Context context, List<Expense> expenseList){
         TextView tv_expenseSource=holder.itemView.findViewById(R.id.item_expenseSource);
         TextView tv_expenseDate=holder.itemView.findViewById(R.id.item_expenseDate);
 
-        tv_expenseAmount.setText(expenseList.get(position).getAmount().toString());
+        tv_expenseAmount.setText("$"+expenseList.get(position).getAmount().toString());
         tv_expenseDate.setText(expenseList.get(position).getDate());
         tv_expenseSource.setText(expenseList.get(position).getSource());
 

@@ -40,7 +40,7 @@ public class IncomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
            TextView tv_incomeSource=holder.itemView.findViewById(R.id.item_incomeSource);
            TextView tv_incomeDate=holder.itemView.findViewById(R.id.item_incomeDate);
 
-            tv_incomeAmount.setText(incomeList.get(position).amount.toString());
+            tv_incomeAmount.setText("$"+incomeList.get(position).amount.toString());
             tv_incomeSource.setText(incomeList.get(position).source);
             tv_incomeDate.setText(incomeList.get(position).date);
 

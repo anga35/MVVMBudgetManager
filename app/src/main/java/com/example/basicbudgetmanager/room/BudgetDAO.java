@@ -32,7 +32,7 @@ public interface BudgetDAO {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertExpense(Expense expense);
 
-    @Query("SELECT * FROM expense_table ORDER BY id DESC")
+    @Query("SELECT * FROM expense_table ORDER BY id ASC")
     LiveData<List<Expense>> getExpense();
 
 

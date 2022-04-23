@@ -50,6 +50,7 @@ Context mContext;
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         TextView tv_expense=view.findViewById(R.id.tv_expense);
+        TextView tv_noExpenses=view.findViewById(R.id.tv_no_expense);
         RecyclerView rv_expense=view.findViewById(R.id.rv_expenses);
         rv_expense.setLayoutManager(new LinearLayoutManager(mContext));
         BudgetViewModel budgetViewModel= new ViewModelProvider(requireActivity()).get(BudgetViewModel.class);
@@ -68,9 +69,16 @@ if(!expenses.isEmpty()){
         sum=sum+expense.getAmount();
 
     }
+    tv_noExpenses.setVisibility(View.GONE);
+rv_expense.setVisibility(View.VISIBLE);
 
     rv_expense.setAdapter(new ExpensesRecyclerAdapter(mContext,expenses));
     tv_expense.setText("$" + sum.toString());
+}else{
+tv_expense.setText("$0");
+    tv_noExpenses.setVisibility(View.VISIBLE);
+    rv_expense.setVisibility(View.GONE);
+
 }
 
             }

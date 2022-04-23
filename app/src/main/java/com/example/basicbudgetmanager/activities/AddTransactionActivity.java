@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.basicbudgetmanager.R;
 import com.example.basicbudgetmanager.adapters.TransactionTypeSpinnerAdapter;
+import com.example.basicbudgetmanager.models.Expense;
 import com.example.basicbudgetmanager.models.Income;
 import com.example.basicbudgetmanager.room.BudgetRepository;
 
@@ -47,16 +48,11 @@ Context mContext=this;
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
 String item = (String)adapterView.getSelectedItem();
-switch (item){
-    case "Income":
+
+
         transactionType =item;
-        break;
-    case "Expense":
-        transactionType=item;
-        break;
-    default:
-        break;
-}
+
+
 
 
             }
@@ -71,19 +67,32 @@ switch (item){
 
             @Override
             public void onClick(View view) {
+                String timeNow= new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
                 if(transactionType=="Income"){
-                    String timeNow= new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+
                     if(addAmount.getText().toString().isEmpty() || addSource.getText().toString().isEmpty()){
                        Toast.makeText(mContext,"Check your input and try again",Toast.LENGTH_SHORT).show();
                     }
                     else{
                         budgetRepository.insertIncome(new Income(addSource.getText().toString(),
                                 Integer.parseInt(addAmount.getText().toString()),timeNow));
+                        finish();
                     }
                 }
                 if(transactionType=="Expense"){
 
+                    if(addAmount.getText().toString().isEmpty() || addSource.getText().toString().isEmpty()){
+                        Toast.makeText(mContext,"Check your input and try again",Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        budgetRepository.insertExpense(new Expense(addSource.getText().toString(),
+                                Integer.parseInt(addAmount.getText().toString()),timeNow));
+                        finish();
+                    }
                 }
+
+
+
             }
         });
 

@@ -22,7 +22,7 @@
             android:textSize="26sp"
             android:fontFamily="@font/roboto_medium"
             android:textColor="#1E1E1E"
-
+android:textStyle="bold"
 
 
             />
@@ -41,6 +41,16 @@
 
     </LinearLayout>
 
+
+    <TextView
+        android:id="@+id/tv_no_expense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No expense available"
+        android:layout_centerInParent="true"
+        android:textSize="21sp"
+        ></TextView>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_expenses"
         android:layout_width="match_parent"
@@ -51,6 +61,7 @@
 
         tools:listitem="@layout/item_expense"
         android:layout_centerHorizontal="true"
+        android:visibility="gone"
         ></androidx.recyclerview.widget.RecyclerView>
 
 </RelativeLayout>
