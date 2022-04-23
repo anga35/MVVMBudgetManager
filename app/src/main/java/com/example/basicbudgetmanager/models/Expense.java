@@ -16,11 +16,14 @@ public class Expense {
 
     int amount;
 
+    @NonNull
+    String date;
 
-    public Expense(@NonNull String source, @NonNull int amount){
+
+    public Expense(@NonNull String source, @NonNull int amount,@NonNull String date){
         this.source=source;
         this.amount=amount;
-
+        this.date=date;
     }
 
 
@@ -31,6 +34,11 @@ public class Expense {
    public int getAmount(){
 
         return this.amount;
+    }
+
+    public String getDate(){
+
+        return this.date;
     }
 
 

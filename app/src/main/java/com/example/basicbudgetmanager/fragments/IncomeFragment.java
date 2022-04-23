@@ -52,11 +52,11 @@ Context mContext;
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         TextView tv_Income=view.findViewById(R.id.tv_income);
-        BudgetViewModel budgetViewModel= new ViewModelProvider(this).get(BudgetViewModel.class);
+        BudgetViewModel budgetViewModel= new ViewModelProvider(requireActivity()).get(BudgetViewModel.class);
         budgetViewModel.getIncomeList().observe((LifecycleOwner) mContext, new Observer<List<Income>>() {
             @Override
             public void onChanged(List<Income> incomes) {
-
+if(!incomes.isEmpty())
                 tv_Income.setText(incomes.get(0).getSource());
             }
         });

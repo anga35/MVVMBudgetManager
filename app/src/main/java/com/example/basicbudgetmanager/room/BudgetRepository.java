@@ -1,4 +1,4 @@
-package com.example.basicbudgetmanager;
+package com.example.basicbudgetmanager.room;
 
 import android.app.Application;
 
@@ -14,7 +14,7 @@ public class BudgetRepository{
     LiveData<List<Income>> incomeList;
     LiveData<List<Expense>> expenseList;
 
-    BudgetRepository(Application application){
+    public BudgetRepository(Application application){
         BudgetRoomDatabase db=BudgetRoomDatabase.getDatabase(application);
         budgetDao=db.budgetDAO();
         incomeList=budgetDao.getIncomes();
@@ -23,21 +23,21 @@ public class BudgetRepository{
 
     }
 
-    LiveData<List<Income>> getIncomeList(){
+    public LiveData<List<Income>> getIncomeList(){
         return incomeList;
 
     }
 
-    LiveData<List<Expense>> getExpenseList(){
+    public LiveData<List<Expense>> getExpenseList(){
         return expenseList;
 
     }
 
 
-    void insertIncome(Income income){
+    public void insertIncome(Income income){
         budgetDao.insertIncome(income);
     }
-    void insertExpense(Expense expense){
+    public void insertExpense(Expense expense){
         budgetDao.insertExpense(expense);
 
     }

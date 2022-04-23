@@ -17,11 +17,14 @@ public String source;
 
 public int amount;
 
+@NonNull
+public String date;
 
-public Income(@NonNull String source, @NonNull int amount){
+
+public Income(@NonNull String source, @NonNull int amount,@NonNull String date){
     this.source=source;
     this.amount=amount;
-
+    this.date=date;
 }
 
 
@@ -34,6 +37,12 @@ public String getSource(){
     return this.amount;
 }
 
+    public String getDate(){
+
+        return this.date;
+    }
+
+
 
     public void setSource( String source){
 
@@ -44,6 +53,8 @@ public String getSource(){
     this.amount=amount;
 
 }
+
+
 
 
 }

@@ -1,4 +1,4 @@
-package com.example.basicbudgetmanager;
+package com.example.basicbudgetmanager.room;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
