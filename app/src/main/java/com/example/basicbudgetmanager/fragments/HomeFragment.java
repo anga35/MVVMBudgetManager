@@ -63,7 +63,11 @@ public class HomeFragment extends Fragment {
             public void onChanged(List<Income> incomeList) {
 
                 if (!incomeList.isEmpty()) {
+                    incomeSum=0;
                     for (Income income : incomeList) {
+
+
+
                         incomeSum = incomeSum + income.amount;
                     }
                     tv_totalIncome.setText("$"+incomeSum.toString());
@@ -83,6 +87,7 @@ public class HomeFragment extends Fragment {
             public void onChanged(List<Expense> expenseList) {
 
                 if(!expenseList.isEmpty()){
+                    expenseSum=0;
                     for (Expense expense : expenseList) {
 
                         expenseSum = expenseSum + expense.getAmount();
